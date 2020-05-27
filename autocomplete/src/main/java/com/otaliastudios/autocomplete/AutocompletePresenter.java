@@ -125,5 +125,6 @@ public abstract class AutocompletePresenter<T> {
         public int height = ViewGroup.LayoutParams.WRAP_CONTENT;
         public int maxWidth = Integer.MAX_VALUE;
         public int maxHeight = Integer.MAX_VALUE;
+        public boolean calculateHeight = true;
     }
 }

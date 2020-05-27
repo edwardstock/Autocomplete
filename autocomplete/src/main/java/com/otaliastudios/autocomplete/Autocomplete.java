@@ -182,6 +182,7 @@ public final class Autocomplete<T> implements TextWatcher, SpanWatcher {
 
         // popup dimensions
         AutocompletePresenter.PopupDimensions dim = this.presenter.getPopupDimensions();
+        popup.setCalculateHeight(dim.calculateHeight);
         popup.setWidth(dim.width);
         popup.setHeight(dim.height);
         popup.setMaxWidth(dim.maxWidth);

@@ -13,7 +13,7 @@ android {
     defaultConfig {
         setMinSdkVersion(property("minSdkVersion") as Int)
         setTargetSdkVersion(property("targetSdkVersion") as Int)
-        versionName = "1.1.0"
+        versionName = "1.1.1"
     }
 
     buildTypes {
@@ -31,10 +31,11 @@ publisher {
     auth.repo = "BINTRAY_REPO"
     project.artifact = "autocomplete"
     project.description = "Simple yet powerful autocomplete behavior for Android EditTexts, to avoid working with MultiAutoCompleteTextView APIs."
-    project.group = "com.otaliastudios"
-    project.url = "https://github.com/natario1/Autocomplete"
-    project.vcsUrl = "https://github.com/natario1/Autocomplete.git"
+    project.group = "com.edwardstock"
+    project.url = "https://github.com/edwardstock/Autocomplete"
+    project.vcsUrl = "https://github.com/edwardstock/Autocomplete.git"
     project.addLicense(License.APACHE_2_0)
     release.setSources(Release.SOURCES_AUTO)
     release.setDocs(Release.DOCS_AUTO)
+    release.version = "1.1.1"
 }

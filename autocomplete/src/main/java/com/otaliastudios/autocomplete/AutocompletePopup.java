@@ -34,6 +34,7 @@ class AutocompletePopup {
     private int mMaxWidth = Integer.MAX_VALUE;
     private int mUserMaxHeight = Integer.MAX_VALUE;
     private int mUserMaxWidth = Integer.MAX_VALUE;
+    private boolean mCalculateHeight = true;
     private int mHorizontalOffset = 0;
     private int mVerticalOffset = 0;
     private boolean mVerticalOffsetSet;
@@ -240,6 +241,14 @@ class AutocompletePopup {
     }
 
     /**
+     * Enable auto-height calculation based on AutocompleteTextView buildDropDown()
+     * @param calculate
+     */
+    void setCalculateHeight(boolean calculate) {
+        mCalculateHeight = calculate;
+    }
+
+    /**
      * Sets the width of the popup window by the size of its content. The final width may be
      * larger to accommodate styled window dressing.
      * @param width Desired width of content in pixels.
@@ -384,7 +393,13 @@ class AutocompletePopup {
 
             // Set width and height.
             mPopup.setWidth(widthSpec);
-            mPopup.setHeight(heightSpec);
+            // if defined auto-calculation, use height spec, otherwise just set developer specified value!
+            if(mCalculateHeight) {
+                mPopup.setHeight(heightSpec);
+            } else {
+                mPopup.setHeight(mHeight);
+            }
+
             mPopup.setClippingEnabled(true);
 
             // use outside touchable to dismiss drop down when touching outside of it, so
