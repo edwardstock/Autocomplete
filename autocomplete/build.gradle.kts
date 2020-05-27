@@ -31,7 +31,7 @@ publisher {
     auth.repo = "BINTRAY_REPO"
     project.artifact = "autocomplete"
     project.description = "Simple yet powerful autocomplete behavior for Android EditTexts, to avoid working with MultiAutoCompleteTextView APIs."
-    project.group = "com.edwardstock"
+    project.group = "com.edwardstock.android"
     project.url = "https://github.com/edwardstock/Autocomplete"
     project.vcsUrl = "https://github.com/edwardstock/Autocomplete.git"
     project.addLicense(License.APACHE_2_0)
