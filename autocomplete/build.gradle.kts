@@ -13,7 +13,7 @@ android {
     defaultConfig {
         setMinSdkVersion(property("minSdkVersion") as Int)
         setTargetSdkVersion(property("targetSdkVersion") as Int)
-        versionName = "1.1.1"
+        versionName = "1.1.2"
     }
 
     buildTypes {
@@ -37,5 +37,5 @@ publisher {
     project.addLicense(License.APACHE_2_0)
     release.setSources(Release.SOURCES_AUTO)
     release.setDocs(Release.DOCS_AUTO)
-    release.version = "1.1.1"
+    release.version = "1.1.2"
 }

@@ -12,7 +12,7 @@ Simple yet powerful autocomplete behavior for `EditText`s, to avoid working with
 `MultiAutoCompleteTextView` APIs.
 
 ```kotlin
-implementation("com.otaliastudios:autocomplete:1.1.0")
+implementation("com.edwardstock.android:autocomplete:1.1.2")
 ```
 
 To see it in action, take a look at the sample app in the `sample` module.

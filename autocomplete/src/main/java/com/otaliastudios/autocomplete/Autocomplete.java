@@ -251,9 +251,10 @@ public final class Autocomplete<T> implements TextWatcher, SpanWatcher {
      * To control when this is called, provide a good implementation of {@link AutocompletePolicy}.
      *
      * @param query query text.
+     * @return true of query is success, false otherwise
      */
-    public void showPopup(@NonNull CharSequence query) {
-        if (isPopupShowing() && lastQuery.equals(query.toString())) return;
+    public boolean showPopup(@NonNull CharSequence query) {
+        if (isPopupShowing() && lastQuery.equals(query.toString())) return true;
         lastQuery = query.toString();
 
         log("showPopup: called with filter "+query);
@@ -266,7 +267,7 @@ public final class Autocomplete<T> implements TextWatcher, SpanWatcher {
             if (callback != null) callback.onPopupVisibilityChanged(true);
         }
         log("showPopup: popup should be showing... "+isPopupShowing());
-        presenter.onQuery(query);
+        return presenter.onQuery(query);
     }
 
     /**
@@ -359,7 +360,12 @@ public final class Autocomplete<T> implements TextWatcher, SpanWatcher {
             dismissPopup();
         } else if (isPopupShowing() || policy.shouldShowPopup(sp, cursor)) {
             // LOG.now("onTextChanged: updating with filter "+policy.getQuery(sp));
-            showPopup(policy.getQuery(sp));
+            boolean success = showPopup(policy.getQuery(sp));
+
+            if(!success && isPopupShowing() && policy.shouldDismissPopup(sp, cursor)) {
+                log("onTextChanged: dismissing");
+                dismissPopup();
+            }
         }
         block = b;
     }
@@ -383,7 +389,10 @@ public final class Autocomplete<T> implements TextWatcher, SpanWatcher {
             boolean b = block;
             block = true;
             if (!isPopupShowing() && policy.shouldShowPopup(text, nstart)) {
-                showPopup(policy.getQuery(text));
+                boolean success = showPopup(policy.getQuery(text));
+                if(!success && isPopupShowing() && policy.shouldDismissPopup(text, nstart)) {
+                    dismissPopup();
+                }
             }
             block = b;
         }

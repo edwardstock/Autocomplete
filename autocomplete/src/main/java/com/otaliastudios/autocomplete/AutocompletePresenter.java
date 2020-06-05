@@ -77,8 +77,9 @@ public abstract class AutocompletePresenter<T> {
      * It is called any time the popup is shown, and any time the text changes and query is updated.
      *
      * @param query query from the edit text, to filter our results
+     * @return true of query is successful, false is not (popup will check policy to dismiss)
      */
-    protected abstract void onQuery(@Nullable CharSequence query);
+    protected abstract boolean onQuery(@Nullable CharSequence query);
 
     /**
      * Called when the popup is hidden, to release resources.
